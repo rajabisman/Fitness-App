@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "PH2eaYdbWOM=",
+  "dgSpecHash": "+98XOpR75UE=",
   "success": true,
-  "projectFilePath": "F:\\FitnessApp\\FitnessApp.Server\\FitnessApp.Server.csproj",
+  "projectFilePath": "F:\\Fitness-App\\FitnessApp.Server\\FitnessApp.Server.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\92306\\.nuget\\packages\\microsoft.aspnetcore.spaproxy\\8.0.17\\microsoft.aspnetcore.spaproxy.8.0.17.nupkg.sha512",
     "C:\\Users\\92306\\.nuget\\packages\\microsoft.extensions.apidescription.server\\6.0.5\\microsoft.extensions.apidescription.server.6.0.5.nupkg.sha512",
