@@ -1,28 +1,83 @@
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import Form from "../Components/Form";
 
 export default function Register() {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+  const navigate = useNavigate();
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    if (password !== confirmPassword) {
+      alert("Passwords do not match");
+      return;
+    }
+
+    const response = await fetch("http://localhost:5215/api/auth/register", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        Email: email,
+        Password: password,
+      }),
+    });
+
+    if (response.ok) {
+      alert("Registered!");
+      navigate("/login");
+    } else {
+      const err = await response.text();
+      alert("Registration failed: " + err);
+    }
+  };
+
   return (
     <div className="flex w-screen h-screen">
-      {/* Left Side */}
-      <div className="w-1/2 h-162 flex items-center justify-center bg-blue-100">
-        <img src="/public/reg.jpg" alt="" />
+      <div className="w-1/2 bg-blue-100 flex items-center justify-center">
+        <img src="/reg.jpg" alt="Register" />
       </div>
 
-      {/* Right Side */}
-      <div className="w-1/2 h-full bg-white flex items-center justify-center">
-        <div className="flex flex-col items-center gap-6">
-          <h2 className="text-3xl font-bold mb-4 text-black">Register</h2>
-          <Form type="email" label="Email" placeholder="abc@gmail.com" />
-          <Form type="password" label="Password" placeholder="xyz123$" />
+      <div className="w-1/2 flex items-center justify-center bg-white">
+        <form
+          onSubmit={handleSubmit}
+          className="flex flex-col gap-6 items-center"
+        >
+          <h2 className="text-3xl font-bold text-black">Register</h2>
+
           <Form
-            type="password"
-            label="Confirm Password"
-            placeholder="xyz123$"
+            label="Email"
+            type="email"
+            placeholder="abc@gmail.com"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
           />
-          <button className="w-full bg-black text-white py-2 rounded hover:bg-gray-800 transition">
+
+          <Form
+            label="Password"
+            type="password"
+            placeholder="xyz123$"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
+
+          <Form
+            label="Confirm Password"
+            type="password"
+            placeholder="xyz123$"
+            value={confirmPassword}
+            onChange={(e) => setConfirmPassword(e.target.value)}
+          />
+
+          <button
+            type="submit"
+            className="w-full bg-black text-white py-2 rounded hover:bg-gray-800 transition"
+          >
             Register
           </button>
-        </div>
+        </form>
       </div>
     </div>
   );

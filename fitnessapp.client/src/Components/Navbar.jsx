@@ -1,15 +1,21 @@
-import React, { useState } from "react";
-
-function Navbar() {
+import { useState } from "react";
+import { NavLink } from "react-router-dom";
+function Navbar({ webname }) {
   const [isOpen, setOpen] = useState(false);
-  const buttonClasses =
+  const linkClasses =
     "text-white bg-transparent font-bold text-sm px-4 py-2 border border-white hover:bg-white hover:text-gray-900 rounded transition duration-300";
 
   const buttons = (
     <>
-      <button className={buttonClasses}>About Us</button>
-      <button className={buttonClasses}>Signup</button>
-      <button className={buttonClasses}>Login</button>
+      <NavLink to="/" className={linkClasses}>
+        About Us
+      </NavLink>
+      <NavLink to="/register" className={linkClasses}>
+        Signup
+      </NavLink>
+      <NavLink to="/login" className={linkClasses}>
+        Login
+      </NavLink>
     </>
   );
   return (
@@ -17,7 +23,9 @@ function Navbar() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           <div className="flex flex-row w-full justify-between">
-            <div className="text-xl font-bold">FitMen</div>
+            <div className="text-xl font-bold">
+              <NavLink to="/">{webname}</NavLink>
+            </div>
             <div className="hidden md:block">
               <div className="flex ml-10 items-baseline space-x-2">
                 {buttons}

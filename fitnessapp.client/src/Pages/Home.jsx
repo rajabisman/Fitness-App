@@ -1,12 +1,10 @@
-import React from "react";
-import Navbar from "../Components/Navbar";
-import HeroSection from "../Components/HeroSection";
-
+import Slider from "../Components/Slider";
+import AboutUs from "../Components/AboutUs";
 function Home() {
   return (
-    <div>
-      <Navbar />
-      <HeroSection />
+    <div className="">
+      <Slider />
+      <AboutUs />
     </div>
   );
 }

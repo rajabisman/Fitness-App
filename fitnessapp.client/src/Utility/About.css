@@ -1,0 +1,20 @@
+.half-card-left {
+  clip-path: polygon(0 0, 40% 0, 60% 100%, 0% 100%);
+  transform: translateX(-200px);
+  transition: transform 1s ease;
+  z-index: 10;
+}
+
+.half-card-right {
+  clip-path: polygon(40% 0, 100% 0, 100% 100%, 60% 100%);
+  transform: translateX(200px);
+  transition: transform 1s ease;
+}
+
+.aos-animate.half-card-left {
+  transform: translateX(0);
+}
+
+.aos-animate.half-card-right {
+  transform: translateX(0);
+}
